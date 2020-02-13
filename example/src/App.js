@@ -1,15 +1,13 @@
-import React, { useState } from 'react'
-import { useShortcuts } from 'react-shortcuts-hook'
+import React from 'react'
+
+import { useMyHook } from 'react-shortcuts-hook'
 
 const App = () => {
-  const [count, setCounter] = useState(0)
-  useShortcuts(['control', 'k'], () => setCounter(count + 1), [count])
-
+  const example = useMyHook()
   return (
     <div>
-      {`You've pressed Control+K ${count} times.`}
+      {example}
     </div>
   )
 }
-
 export default App
