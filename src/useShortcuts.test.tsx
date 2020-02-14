@@ -1,16 +1,16 @@
-import React, { useState } from 'react'
+import React from "react"
 import { render, fireEvent } from '@testing-library/react'
-import { useShortcuts } from './'
+import { useShortcuts } from '.'
 
 const TestComponent = ({ shortcut }) => {
-  const [value, setValue] = useState(0)
+  const [value, setValue] = React.useState(0)
   useShortcuts(shortcut, () => setValue(value + 1), [value])
 
   return <span>{value}</span>
 }
 
 const AdvancedTestComponent = ({ incrementShortcut, decrementShortcut }) => {
-  const [value, setValue] = useState(0)
+  const [value, setValue] = React.useState(0)
   useShortcuts(incrementShortcut, () => setValue(value + 1), [value])
   useShortcuts(decrementShortcut, () => setValue(value - 1), [value])
 

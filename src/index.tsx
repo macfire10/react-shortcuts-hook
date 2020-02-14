@@ -1,23 +1,38 @@
-import * as React from 'react';
+import { useEffect, useCallback } from "react";
 
-export const useMyHook = () => {
-  let [{
-    counter
-  }, setState] = React.useState<{
-    counter: number;
-  }>({
-    counter: 0
-  });
+const setsEqual = (setA: Set<String>, setB: Set<String>) : boolean =>
+  setA.size === setB.size && !Array.from(setA).some(v => !setB.has(v));
 
-  React.useEffect(() => {
-    let interval = window.setInterval(() => {
-      counter++;
-      setState({counter})
-    }, 1000)
+type Hook = (
+  keys: Array<String>,
+  callback: () => void,
+  deps: Array<any>
+) => void;
+
+export const useShortcuts: Hook = (keys, callback, deps) => {
+  const memoizedCallback = useCallback(callback, deps || []);
+  const targetKeys: Set<String> = new Set(keys.map(key => key.toLowerCase()));
+  const pressedKeys: Set<String> = new Set();
+
+  function onKeyPressed(event: KeyboardEvent): void {
+    pressedKeys.add(event.key.toLowerCase());
+
+    if (setsEqual(pressedKeys, targetKeys)) {
+      memoizedCallback();
+    }
+  }
+
+  function onKeyUp(event: KeyboardEvent): void {
+    pressedKeys.delete(event.key.toLowerCase());
+  }
+
+  useEffect(() => {
+    window.addEventListener("keydown", onKeyPressed);
+    window.addEventListener("keyup", onKeyUp);
+
     return () => {
-      window.clearInterval(interval);
+      window.removeEventListener("keydown", onKeyPressed);
+      window.removeEventListener("keyup", onKeyUp);
     };
-  }, []);
-
-  return counter;
+  }, [memoizedCallback]);
 };

@@ -11,7 +11,7 @@
     ],
     "sourceMap": true,
     "allowJs": false,
-    "jsx": "preserve",
+    "jsx": "react",
     "declaration": true,
     "moduleResolution": "node",
     "forceConsistentCasingInFileNames": true,
@@ -27,7 +27,7 @@
     "allowSyntheticDefaultImports": true,
     "strict": true,
     "resolveJsonModule": true,
-    "isolatedModules": false,
+    "isolatedModules": true,
     "noEmit": true
   },
   "include": [
@@ -38,6 +38,7 @@
     "build",
     "dist",
     "example",
-    "rollup.config.js"
+    "rollup.config.js",
+    "**/*.test.tsx"
   ]
 }
