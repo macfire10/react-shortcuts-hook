@@ -3,9 +3,7 @@ A *zero-dependencies*, *lightweight* hook for capturing keyboard shortcuts in co
 **5 times lighter** than [react-hotkeys-hook](https://github.com/JohannesKlauss/react-hotkeys-hook "react-hotkeys-hook"), **4 times** lighter than [use-hotkeys](https://github.com/sandiiarov/use-hotkeys "use-hotkeys").
 
 ![npm](https://img.shields.io/npm/v/react-shortcuts-hook?style=flat-square)
-![npm bundle size](https://img.shields.io/bundlephobia/minzip/react-shortcuts-hook?style=flat-square)
-![David](https://img.shields.io/david/macfire10/react-shortcuts-hook?style=flat-square)
-![Travis (.org)](https://img.shields.io/travis/macfire10/react-shortcuts-hook?style=flat-square)
+![npm bundle size](https://img.shields.io/bundlephobia/minzip/react-shortcuts-hook/1.1.0)
 
 ## Install
 
