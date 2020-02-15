@@ -1,6 +1,6 @@
 import { useEffect, useCallback } from "react";
 
-const setsEqual = (setA: Set<String>, setB: Set<String>) : boolean =>
+const setsEqual = (setA: Set<String>, setB: Set<String>): boolean =>
   setA.size === setB.size && !Array.from(setA).some(v => !setB.has(v));
 
 type Hook = (
@@ -16,7 +16,8 @@ export const useShortcuts: Hook = (keys, callback, deps) => {
 
   function onKeyPressed(event: KeyboardEvent): void {
     pressedKeys.add(event.key.toLowerCase());
-
+    console.log(pressedKeys, targetKeys, setsEqual(pressedKeys, targetKeys));
+    
     if (setsEqual(pressedKeys, targetKeys)) {
       memoizedCallback();
     }
