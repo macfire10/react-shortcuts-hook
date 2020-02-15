@@ -16,7 +16,6 @@ export const useShortcuts: Hook = (keys, callback, deps) => {
 
   function onKeyPressed(event: KeyboardEvent): void {
     pressedKeys.add(event.key.toLowerCase());
-    console.log(pressedKeys, targetKeys, setsEqual(pressedKeys, targetKeys));
     
     if (setsEqual(pressedKeys, targetKeys)) {
       memoizedCallback();
