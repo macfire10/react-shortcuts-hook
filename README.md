@@ -39,6 +39,9 @@ const App = () => {
 export default App
 ```
 
+## Live example
+[![Edit basic-example](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/basic-example-g6fnu?fontsize=14&hidenavigation=1&theme=dark)
+
 ## Parameters
 
 - `keys: string[]`: Here you can set a single key, or a combination of keys, that you want hook to listen to. Every entry of this array should be a string with a proper `KeyboardEvent.key` value. [Here](https://keycode.info/) you can find a nice cheatsheet.

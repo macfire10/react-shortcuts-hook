@@ -21,21 +21,22 @@
     "test:watch": "react-scripts-ts test --env=jsdom",
     "build": "rollup -c",
     "start": "rollup -c -w",
-    "prepare": "npm run build",
-    "predeploy": "cd example && npm install && npm run build",
+    "prepare": "yarn build",
+    "predeploy": "cd example && yarn install && yarn build",
     "deploy": "gh-pages -d example/build"
   },
-  "dependencies": {},
+  "dependencies": {
+  },
   "peerDependencies": {
     "react": ">=16.8.0",
     "react-dom": ">=16.8.0"
   },
   "devDependencies": {
+    "react": ">=16.8.0",
+    "react-dom": ">=16.8.0",
     "@babel/core": "^7.2.2",
     "@babel/runtime": "^7.3.1",
-    "@testing-library/react": "^9.4.0",
     "@types/jest": "^23.3.14",
-    "@types/react": "^16.7.20",
     "@typescript-eslint/parser": "^1.4.2",
     "babel-core": "^6.26.3",
     "babel-runtime": "^6.26.0",
@@ -50,6 +51,8 @@
     "rollup-plugin-typescript2": "^0.19.2",
     "rollup-plugin-url": "^2.1.0",
     "ts-jest": "^22.4.6",
-    "typescript": "^3.3.3333"
+    "typescript": "^3.3.3333",
+    "@testing-library/react": "^11.2.5",
+    "@types/react": "^17.0.1"
   }
 }
