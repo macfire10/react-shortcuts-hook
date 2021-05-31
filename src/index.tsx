@@ -20,13 +20,19 @@ export const useShortcuts = (keys: Array<string>, callback: () => void, deps: Ar
     pressedKeys.delete(event.key.toLowerCase());
   }
 
+  function onWindowBlur(): void {
+    pressedKeys.clear();
+  }
+
   useEffect(() => {
     window.addEventListener("keydown", onKeyPressed);
     window.addEventListener("keyup", onKeyUp);
+    window.addEventListener("blur", onWindowBlur);
 
     return () => {
       window.removeEventListener("keydown", onKeyPressed);
       window.removeEventListener("keyup", onKeyUp);
+      window.removeEventListener("blur", onWindowBlur);
     };
   }, [memoizedCallback]);
 };
