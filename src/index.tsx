@@ -9,7 +9,8 @@ export const useShortcuts = (keys: Array<string>, callback: () => void, deps: Ar
   const pressedKeys: Set<String> = new Set();
 
   function onKeyPressed(event: KeyboardEvent): void {
-    pressedKeys.add(event.key.toLowerCase());
+    if (event.key)
+      pressedKeys.add(event.key.toLowerCase());
 
     if (setsEqual(pressedKeys, targetKeys)) {
       memoizedCallback();
@@ -17,7 +18,8 @@ export const useShortcuts = (keys: Array<string>, callback: () => void, deps: Ar
   }
 
   function onKeyUp(event: KeyboardEvent): void {
-    pressedKeys.delete(event.key.toLowerCase());
+    if (event.key)
+      pressedKeys.delete(event.key.toLowerCase());
   }
 
   function onWindowBlur(): void {
