@@ -1,12 +1,12 @@
 import { useEffect, useCallback } from "react";
 
-const setsEqual = (setA: Set<String>, setB: Set<String>): boolean =>
+const setsEqual = (setA: Set<string>, setB: Set<string>): boolean =>
   setA.size === setB.size && !Array.from(setA).some(v => !setB.has(v));
 
-export const useShortcuts = (keys: Array<string>, callback: () => void, deps: Array<any>) => {
+export const useShortcuts = (keys: string[], callback: () => void, deps: Array<any>) => {
   const memoizedCallback = useCallback(callback, deps || []);
-  const targetKeys: Set<String> = new Set(keys.map(key => key.toLowerCase()));
-  const pressedKeys: Set<String> = new Set();
+  const targetKeys: Set<string> = new Set(keys.map(key => key.toLowerCase()));
+  const pressedKeys: Set<string> = new Set();
 
   function onKeyPressed(event: KeyboardEvent): void {
     pressedKeys.add(event.key.toLowerCase());
