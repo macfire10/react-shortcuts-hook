@@ -2,7 +2,8 @@ import React from "react"
 import { render, fireEvent } from '@testing-library/react'
 import { useShortcuts } from '.'
 
-const TestComponent = ({ shortcut }) => {
+type TestComponentProps = { shortcut: ReadonlyArray<string> };
+const TestComponent = ({ shortcut }: TestComponentProps) => {
   const [value, setValue] = React.useState(0)
   useShortcuts(shortcut, () => setValue(value + 1), [value])
 
