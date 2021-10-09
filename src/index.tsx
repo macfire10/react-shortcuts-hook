@@ -1,9 +1,9 @@
-import { useEffect, useCallback } from "react";
+import { DependencyList, useEffect, useCallback } from "react";
 
 const setsEqual = (setA: Set<string>, setB: Set<string>): boolean =>
   setA.size === setB.size && !Array.from(setA).some(v => !setB.has(v));
 
-export const useShortcuts = (keys: string[], callback: () => void, deps: Array<any>) => {
+export const useShortcuts = (keys: ReadonlyArray<string>, callback: () => void, deps: DependencyList) => {
   const memoizedCallback = useCallback(callback, deps || []);
   const targetKeys: Set<string> = new Set(keys.map(key => key.toLowerCase()));
   const pressedKeys: Set<string> = new Set();
